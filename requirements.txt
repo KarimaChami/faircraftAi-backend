@@ -1,0 +1,13 @@
+requests 
+pandas 
+python-dotenv 
+openpyxl
+python-multipart
+psycopg2
+python-jose
+argon2-cffi
+sqlalchemy
+fastapi
+pydantic[email]
+passlib
+
