@@ -1,0 +1,21 @@
+
+.venv/
+__pycache__/
+*.pyc
+data/
+*.jsonl
+*.pkl
+*.pt
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# uv / pyenv
+.python-version
+uv.lock
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
