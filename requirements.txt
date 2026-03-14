@@ -10,4 +10,6 @@ sqlalchemy
 fastapi
 pydantic[email]
 passlib
-
+matplotlib
+seaborn
+scikit-learn
