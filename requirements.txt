@@ -13,3 +13,4 @@ passlib
 matplotlib
 seaborn
 scikit-learn
+xgboost

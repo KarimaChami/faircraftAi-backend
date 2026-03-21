@@ -1,0 +1,14 @@
+2026-03-18 11:16:25,424 - FairCraft-Pipeline - INFO - --- FairCraft AI Data Pipeline Started ---
+2026-03-18 11:16:25,425 - FairCraft-Pipeline - INFO - Step 1: Ingesting raw data from data/raw/meta_Handmade_Products.jsonl
+2026-03-18 11:16:31,454 - FairCraft-Pipeline - INFO - Step 2: Loading processed data for validation.
+2026-03-18 11:16:31,802 - FairCraft-Pipeline - INFO - Starting Data Validation...
+2026-03-18 11:16:31,803 - FairCraft-Pipeline - INFO - Validation Passed: 50000 records ready for ML.
+2026-03-18 11:16:31,804 - FairCraft-Pipeline - INFO - Step 3: Validation Successful.
+2026-03-18 11:16:31,804 - FairCraft-Pipeline - INFO - --- Pipeline Completed Successfully ---
+2026-03-18 11:50:32,870 - FairCraft-Pipeline - INFO - --- FairCraft AI Data Pipeline Started ---
+2026-03-18 11:50:32,871 - FairCraft-Pipeline - INFO - Step 1: Ingesting raw data from data/raw/meta_Handmade_Products.jsonl
+2026-03-18 11:50:41,225 - FairCraft-Pipeline - INFO - Step 2: Loading processed data for validation.
+2026-03-18 11:50:41,662 - FairCraft-Pipeline - INFO - Starting Data Validation...
+2026-03-18 11:50:41,664 - FairCraft-Pipeline - INFO - Validation Passed: 50000 records ready for ML.
+2026-03-18 11:50:41,665 - FairCraft-Pipeline - INFO - Step 3: Validation Successful.
+2026-03-18 11:50:41,666 - FairCraft-Pipeline - INFO - --- Pipeline Completed Successfully ---
