@@ -1,0 +1,203 @@
+2026-03-21 12:26:03,619 [INFO] ==================================================
+2026-03-21 12:26:03,620 [INFO] FAIRCRAFT AI - DATA PIPELINE TRIGGERED AT Sat Mar 21 12:26:03 2026
+2026-03-21 12:26:03,621 [INFO] ==================================================
+2026-03-21 12:26:03,621 [INFO] ==> Starting Stage: Data Ingestion
+2026-03-21 12:26:03,806 [ERROR] ==> Stage 'Data Ingestion' FAILED with exit code 1.
+2026-03-21 12:26:03,806 [ERROR] Error output: Traceback (most recent call last):
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\src\ml\scrape_etsy.py", line 1, in <module>
+    import requests
+ModuleNotFoundError: No module named 'requests'
+
+2026-03-21 12:26:03,808 [ERROR] ==================================================
+2026-03-21 12:26:03,809 [ERROR] PIPELINE TERMINATED FATALLY: Pipeline failed at stage Data Ingestion
+2026-03-21 12:26:03,809 [ERROR] ==================================================
+2026-03-21 12:28:24,021 [INFO] ==================================================
+2026-03-21 12:28:24,022 [INFO] FAIRCRAFT AI - DATA PIPELINE TRIGGERED AT Sat Mar 21 12:28:24 2026
+2026-03-21 12:28:24,022 [INFO] ==================================================
+2026-03-21 12:28:24,023 [INFO] ==> Starting Stage: Data Ingestion
+2026-03-21 12:28:24,227 [ERROR] ==> Stage 'Data Ingestion' FAILED with exit code 1.
+2026-03-21 12:28:24,227 [ERROR] Error output: Traceback (most recent call last):
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\src\ml\scrape_etsy.py", line 1, in <module>
+    import requests
+ModuleNotFoundError: No module named 'requests'
+
+2026-03-21 12:28:24,228 [ERROR] ==================================================
+2026-03-21 12:28:24,228 [ERROR] PIPELINE TERMINATED FATALLY: Pipeline failed at stage Data Ingestion
+2026-03-21 12:28:24,229 [ERROR] ==================================================
+2026-03-21 12:33:48,787 [INFO] ==================================================
+2026-03-21 12:33:48,788 [INFO] FAIRCRAFT AI - DATA PIPELINE TRIGGERED AT Sat Mar 21 12:33:48 2026
+2026-03-21 12:33:48,789 [INFO] ==================================================
+2026-03-21 12:33:48,789 [INFO] ==> Starting Stage: Data Ingestion
+2026-03-21 12:34:13,199 [INFO] ==> Stage 'Data Ingestion' completed successfully in 24.41 seconds.
+2026-03-21 12:34:13,199 [INFO] ==> Starting Stage: Data Cleaning/ETL
+2026-03-21 12:34:14,978 [ERROR] ==> Stage 'Data Cleaning/ETL' FAILED with exit code 1.
+2026-03-21 12:34:14,979 [ERROR] Error output: 2026-03-21 12:34:14,775 - INFO - --- FairCraft Etsy ETL Started ---
+2026-03-21 12:34:14,775 - INFO - Loading raw dataset from: C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\data\raw\etsy_products.csv
+Traceback (most recent call last):
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\src\ml\etl_pipeline.py", line 155, in <module>
+    etl.run()
+    ~~~~~~~^^
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\src\ml\etl_pipeline.py", line 128, in run
+    df_raw = self.load_data()
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\src\ml\etl_pipeline.py", line 25, in load_data
+    df = pd.read_csv(self.raw_path)
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 873, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 300, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1645, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1922, in _make_engine
+    return mapping[engine](f, **self.options)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\.venv\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 95, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+                   ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "pandas/_libs/parsers.pyx", line 575, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file
+
+2026-03-21 12:34:14,984 [ERROR] ==================================================
+2026-03-21 12:34:14,985 [ERROR] PIPELINE TERMINATED FATALLY: Pipeline failed at stage Data Cleaning/ETL
+2026-03-21 12:34:14,986 [ERROR] ==================================================
+2026-03-21 12:44:10,524 [INFO] ==================================================
+2026-03-21 12:44:10,527 [INFO] FAIRCRAFT AI - DATA PIPELINE TRIGGERED AT Sat Mar 21 12:44:10 2026
+2026-03-21 12:44:10,527 [INFO] ==================================================
+2026-03-21 12:44:10,529 [INFO] ==> Starting Stage: Data Ingestion
+2026-03-21 12:44:13,764 [INFO] ==> Stage 'Data Ingestion' completed successfully in 3.23 seconds.
+2026-03-21 12:44:13,765 [INFO] ==> Starting Stage: Data Cleaning/ETL
+2026-03-21 12:44:15,372 [ERROR] ==> Stage 'Data Cleaning/ETL' FAILED with exit code 1.
+2026-03-21 12:44:15,373 [ERROR] Error output: 2026-03-21 12:44:15,072 - INFO - --- FairCraft Etsy ETL Started ---
+2026-03-21 12:44:15,073 - INFO - Loading raw dataset from: C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\data\raw\etsy_products.csv
+2026-03-21 12:44:15,114 - INFO - Loaded 267 records.
+2026-03-21 12:44:15,114 - INFO - Cleaning data...
+Traceback (most recent call last):
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\src\ml\etl_pipeline.py", line 155, in <module>
+    etl.run()
+    ~~~~~~~^^
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\src\ml\etl_pipeline.py", line 139, in run
+    df_clean = self.clean_data(df_raw)
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\src\ml\etl_pipeline.py", line 60, in clean_data
+    df['reviews_numeric'] = df['number_of_reviews'].apply(lambda x: int(re.sub(r'\\D', '', str(x))) if re.sub(r'\\D', '', str(x)) else 0)
+                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\.venv\Lib\site-packages\pandas\core\series.py", line 5084, in apply
+    ).apply()
+      ~~~~~^^
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\.venv\Lib\site-packages\pandas\core\apply.py", line 1520, in apply
+    return self.apply_standard()
+           ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\.venv\Lib\site-packages\pandas\core\apply.py", line 1578, in apply_standard
+    mapped = obj._map_values(mapper=curried)
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\.venv\Lib\site-packages\pandas\core\base.py", line 1020, in _map_values
+    return arr.map(mapper, na_action=na_action)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\.venv\Lib\site-packages\pandas\core\arrays\base.py", line 2744, in map
+    return map_array(self, mapper, na_action=na_action)
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\.venv\Lib\site-packages\pandas\core\algorithms.py", line 1710, in map_array
+    return lib.map_infer(values, mapper)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "pandas/_libs/lib.pyx", line 3071, in pandas._libs.lib.map_infer
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\src\ml\etl_pipeline.py", line 60, in <lambda>
+    df['reviews_numeric'] = df['number_of_reviews'].apply(lambda x: int(re.sub(r'\\D', '', str(x))) if re.sub(r'\\D', '', str(x)) else 0)
+                                                                    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '(383)'
+
+2026-03-21 12:44:15,377 [ERROR] ==================================================
+2026-03-21 12:44:15,377 [ERROR] PIPELINE TERMINATED FATALLY: Pipeline failed at stage Data Cleaning/ETL
+2026-03-21 12:44:15,378 [ERROR] ==================================================
+2026-03-21 12:44:48,158 [INFO] ==================================================
+2026-03-21 12:44:48,159 [INFO] FAIRCRAFT AI - DATA PIPELINE TRIGGERED AT Sat Mar 21 12:44:48 2026
+2026-03-21 12:44:48,159 [INFO] ==================================================
+2026-03-21 12:44:48,160 [INFO] ==> Starting Stage: Data Ingestion
+2026-03-21 12:44:51,715 [INFO] ==> Stage 'Data Ingestion' completed successfully in 3.55 seconds.
+2026-03-21 12:44:51,716 [INFO] ==> Starting Stage: Data Cleaning/ETL
+2026-03-21 12:44:53,316 [ERROR] ==> Stage 'Data Cleaning/ETL' FAILED with exit code 1.
+2026-03-21 12:44:53,316 [ERROR] Error output: 2026-03-21 12:44:53,076 - INFO - --- FairCraft Etsy ETL Started ---
+2026-03-21 12:44:53,077 - INFO - Loading raw dataset from: C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\data\raw\etsy_products.csv
+2026-03-21 12:44:53,089 - INFO - Loaded 280 records.
+2026-03-21 12:44:53,090 - INFO - Cleaning data...
+Traceback (most recent call last):
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\src\ml\etl_pipeline.py", line 155, in <module>
+    etl.run()
+    ~~~~~~~^^
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\src\ml\etl_pipeline.py", line 139, in run
+    df_clean = self.clean_data(df_raw)
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\src\ml\etl_pipeline.py", line 60, in clean_data
+    df['reviews_numeric'] = df['number_of_reviews'].apply(lambda x: int(re.sub(r'\\D', '', str(x))) if re.sub(r'\\D', '', str(x)) else 0)
+                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\.venv\Lib\site-packages\pandas\core\series.py", line 5084, in apply
+    ).apply()
+      ~~~~~^^
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\.venv\Lib\site-packages\pandas\core\apply.py", line 1520, in apply
+    return self.apply_standard()
+           ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\.venv\Lib\site-packages\pandas\core\apply.py", line 1578, in apply_standard
+    mapped = obj._map_values(mapper=curried)
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\.venv\Lib\site-packages\pandas\core\base.py", line 1020, in _map_values
+    return arr.map(mapper, na_action=na_action)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\.venv\Lib\site-packages\pandas\core\arrays\base.py", line 2744, in map
+    return map_array(self, mapper, na_action=na_action)
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\.venv\Lib\site-packages\pandas\core\algorithms.py", line 1710, in map_array
+    return lib.map_infer(values, mapper)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "pandas/_libs/lib.pyx", line 3071, in pandas._libs.lib.map_infer
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\src\ml\etl_pipeline.py", line 60, in <lambda>
+    df['reviews_numeric'] = df['number_of_reviews'].apply(lambda x: int(re.sub(r'\\D', '', str(x))) if re.sub(r'\\D', '', str(x)) else 0)
+                                                                    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '(373)'
+
+2026-03-21 12:44:53,321 [ERROR] ==================================================
+2026-03-21 12:44:53,321 [ERROR] PIPELINE TERMINATED FATALLY: Pipeline failed at stage Data Cleaning/ETL
+2026-03-21 12:44:53,322 [ERROR] ==================================================
+2026-03-21 12:47:50,968 [INFO] ==================================================
+2026-03-21 12:47:50,969 [INFO] FAIRCRAFT AI - DATA PIPELINE TRIGGERED AT Sat Mar 21 12:47:50 2026
+2026-03-21 12:47:50,970 [INFO] ==================================================
+2026-03-21 12:47:50,971 [INFO] ==> Starting Stage: Data Ingestion
+2026-03-21 12:47:51,174 [ERROR] ==> Stage 'Data Ingestion' FAILED with exit code 1.
+2026-03-21 12:47:51,175 [ERROR] Error output: Traceback (most recent call last):
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\src\ml\scrape_etsy.py", line 1, in <module>
+    import requests
+ModuleNotFoundError: No module named 'requests'
+
+2026-03-21 12:47:51,176 [ERROR] ==================================================
+2026-03-21 12:47:51,176 [ERROR] PIPELINE TERMINATED FATALLY: Pipeline failed at stage Data Ingestion
+2026-03-21 12:47:51,177 [ERROR] ==================================================
+2026-03-21 12:49:10,756 [INFO] ==================================================
+2026-03-21 12:49:10,757 [INFO] FAIRCRAFT AI - DATA PIPELINE TRIGGERED AT Sat Mar 21 12:49:10 2026
+2026-03-21 12:49:10,757 [INFO] ==================================================
+2026-03-21 12:49:10,758 [INFO] ==> Starting Stage: Data Ingestion
+2026-03-21 12:49:13,871 [INFO] ==> Stage 'Data Ingestion' completed successfully in 3.11 seconds.
+2026-03-21 12:49:13,874 [INFO] ==> Starting Stage: Data Cleaning/ETL
+2026-03-21 12:49:15,419 [INFO] ==> Stage 'Data Cleaning/ETL' completed successfully in 1.54 seconds.
+2026-03-21 12:49:15,419 [INFO] ==> Starting Validation & Storage Checks
+2026-03-21 12:49:15,420 [INFO] Validation Success: 'etsy_clean.csv' is ready for modeling (Size: 256 bytes).
+2026-03-21 12:49:15,420 [INFO] ==================================================
+2026-03-21 12:49:15,421 [INFO] PIPELINE COMPLETED SUCCESSFULLY. Ready for ML.
+2026-03-21 12:49:15,421 [INFO] ==================================================
+2026-03-21 12:54:35,177 [INFO] ==================================================
+2026-03-21 12:54:35,180 [INFO] FAIRCRAFT AI - DATA PIPELINE TRIGGERED AT Sat Mar 21 12:54:35 2026
+2026-03-21 12:54:35,181 [INFO] ==================================================
+2026-03-21 12:54:35,185 [INFO] ==> Starting Stage: Data Ingestion
+2026-03-21 12:54:37,762 [ERROR] ==> Stage 'Data Ingestion' FAILED with exit code 1.
+2026-03-21 12:54:37,764 [ERROR] Error output: Traceback (most recent call last):
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\src\ml\scrape_etsy.py", line 2, in <module>
+    from bs4 import BeautifulSoup
+ModuleNotFoundError: No module named 'bs4'
+
+2026-03-21 12:54:37,766 [ERROR] ==================================================
+2026-03-21 12:54:37,769 [ERROR] PIPELINE TERMINATED FATALLY: Pipeline failed at stage Data Ingestion
+2026-03-21 12:54:37,771 [ERROR] ==================================================
+2026-03-21 13:16:10,548 [INFO] ==================================================
+2026-03-21 13:16:10,549 [INFO] FAIRCRAFT AI - DATA PIPELINE TRIGGERED AT Sat Mar 21 13:16:10 2026
+2026-03-21 13:16:10,550 [INFO] ==================================================
+2026-03-21 13:16:10,551 [INFO] ==> Starting Stage: Data Ingestion
+2026-03-21 13:16:11,440 [ERROR] ==> Stage 'Data Ingestion' FAILED with exit code 1.
+2026-03-21 13:16:11,440 [ERROR] Error output: Traceback (most recent call last):
+  File "C:\Users\hp\Simplon_project\faircraft-ai\faircraftAi-backend\src\ml\scrape_etsy.py", line 2, in <module>
+    from bs4 import BeautifulSoup
+ModuleNotFoundError: No module named 'bs4'
+
+2026-03-21 13:16:11,441 [ERROR] ==================================================
+2026-03-21 13:16:11,442 [ERROR] PIPELINE TERMINATED FATALLY: Pipeline failed at stage Data Ingestion
+2026-03-21 13:16:11,442 [ERROR] ==================================================
