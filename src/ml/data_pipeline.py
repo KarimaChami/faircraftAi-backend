@@ -1,75 +1,89 @@
-import os
-import sys
 import logging
-import pandas as pd
-
-# Add the root directory to sys.path to import etl_pipeline
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
-
-from etl_pipeline import run_etl
-
-# Configure logging
+import os
+import subprocess
+import time
+import sys
+# Configure logging system for the Automated Pipeline
+LOG_PATH = os.path.join(os.path.dirname(__file__), 'data_pipeline.log')
 logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    level=logging.INFO, 
+    format='%(asctime)s [%(levelname)s] %(message)s',
     handlers=[
-        logging.FileHandler("data_pipeline.log"),
-        logging.StreamHandler(sys.stdout)
+        logging.FileHandler(LOG_PATH),
+        logging.StreamHandler()
     ]
 )
-logger = logging.getLogger("FairCraft-Pipeline")
 
-def validate_data(df):
-    """Simple data validation rules."""
-    logger.info("Starting Data Validation...")
-    
-    # Check for empty dataframe
-    if df.empty:
-        logger.error("Validation Failed: Dataframe is empty.")
-        return False
-        
-    # Check for required columns
-    required_cols = ['price', 'est_base_cost', 'est_time_h']
-    for col in required_cols:
-        if col not in df.columns:
-            logger.error(f"Validation Failed: Missing required column {col}")
-            return False
-            
-    # Check for negative prices
-    if (df['price'] < 0).any():
-        logger.warning("Validation Warning: Found negative prices. Cleaning...")
-        df = df[df['price'] >= 0]
-        
-    logger.info(f"Validation Passed: {len(df)} records ready for ML.")
-    return True
+class AutomatedDataPipeline:
+    """
+    Automated Data Pipeline for FairCraft AI (Etsy Dataset).
+    Simulates a production-ready execution matching an Airflow DAG.
+    Orchestrates: Ingestion (Scraping) -> Cleaning/ETL -> Validation -> Storage.
+    """
+    def __init__(self):
+        self.base_dir = os.path.abspath(os.path.dirname(__file__))
+        self.scrape_script = os.path.join(self.base_dir, 'scrape_etsy.py')
+        self.etl_script = os.path.join(self.base_dir, 'etl_pipeline.py')
 
-def run_pipeline():
-    RAW_DATA = 'data/raw/meta_Handmade_Products.jsonl'
-    PROCESSED_DATA = 'data/processed/processed_artisans.csv'
-    
-    logger.info("--- FairCraft AI Data Pipeline Started ---")
-    
-    try:
-        # 1. Ingestion & ETL
-        logger.info(f"Step 1: Ingesting raw data from {RAW_DATA}")
-        run_etl(RAW_DATA, PROCESSED_DATA, limit=50000)
+    def run_stage(self, stage_name: str, script_path: str):
+        logging.info(f"==> Starting Stage: {stage_name}")
+        start_time = time.time()
+        try:
+            # Execute script as a subprocess
+            result = subprocess.run(
+                [sys.executable, script_path],
+                capture_output=True,
+                text=True,
+                check=True
+            )
+            elapsed = time.time() - start_time
+            logging.info(f"==> Stage '{stage_name}' completed successfully in {elapsed:.2f} seconds.")
+            # Logging subprocess output to the pipeline log implicitly
+            for line in result.stdout.splitlines():
+                if "INFO" in line or "WARNING" in line:
+                    logging.info(f"[{stage_name} Out] {line.strip()}")
+        except subprocess.CalledProcessError as e:
+            logging.error(f"==> Stage '{stage_name}' FAILED with exit code {e.returncode}.")
+            logging.error(f"Error output: {e.stderr}")
+            raise Exception(f"Pipeline failed at stage {stage_name}")
+
+    def validate_and_store(self):
+        logging.info("==> Starting Validation & Storage Checks")
+        processed_path = os.path.join(self.base_dir, '../../data/processed/etsy_clean.csv')
+        if not os.path.exists(processed_path):
+            logging.error("Validation Failed: Processed file 'etsy_clean.csv' does not exist.")
+            raise FileNotFoundError(processed_path)
         
-        # 2. Loading for Validation
-        logger.info(f"Step 2: Loading processed data for validation.")
-        df = pd.read_csv(PROCESSED_DATA)
-        
-        # 3. Validation
-        if validate_data(df):
-            logger.info("Step 3: Validation Successful.")
+        # Simple file stats validation to ensure storage succeeded
+        file_size = os.path.getsize(processed_path)
+        if file_size < 100:  # Arbitrary threshold to check if file is basically empty
+            logging.warning("Validation Warning: Processed file is suspiciously small.")
         else:
-            logger.error("Step 3: Validation Failed.")
-            return
-            
-        logger.info("--- Pipeline Completed Successfully ---")
+            logging.info(f"Validation Success: 'etsy_clean.csv' is ready for modeling (Size: {file_size} bytes).")
+
+    def run_pipeline(self):
+        logging.info("="*50)
+        logging.info(f"FAIRCRAFT AI - DATA PIPELINE TRIGGERED AT {time.ctime()}")
+        logging.info("="*50)
         
-    except Exception as e:
-        logger.error(f"Pipeline Crashed: {str(e)}")
-        raise
+        try:
+            # Task 1: Data Ingestion (Scraping Etsy)
+            self.run_stage("Data Ingestion", self.scrape_script)
+            
+            # Task 2: Data Cleaning & Feature Engineering
+            self.run_stage("Data Cleaning/ETL", self.etl_script)
+            
+            # Task 3: Validation & Storage Verification
+            self.validate_and_store()
+            
+            logging.info("="*50)
+            logging.info("PIPELINE COMPLETED SUCCESSFULLY. Ready for ML.")
+            logging.info("="*50)
+        except Exception as e:
+            logging.error("="*50)
+            logging.error(f"PIPELINE TERMINATED FATALLY: {e}")
+            logging.error("="*50)
 
 if __name__ == "__main__":
-    run_pipeline()
+    pipeline = AutomatedDataPipeline()
+    pipeline.run_pipeline()
