@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException
-from app.models.user import User
-from app.core.security import hash_password, verify_password, create_access_token
+from src.app.models.user import User
+from src.app.core.security import hash_password, verify_password, create_access_token
 
 def register_user(db: Session, user_data):
     
