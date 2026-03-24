@@ -16,3 +16,4 @@ scikit-learn
 xgboost
 nbformat
 beautifulsoup4 
+pytest
