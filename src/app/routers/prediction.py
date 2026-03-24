@@ -9,7 +9,7 @@ from sqlalchemy.orm import Session
 from src.app.dependencies.model import get_model
 from src.app.db.config import get_db
 from src.app.services.prediction_service import PredictionService
-
+from src.app.dependencies.auth_dependencies import get_current_active_user
 logger = logging.getLogger(__name__)
 
 router = APIRouter(
@@ -22,7 +22,7 @@ def health_check():
     return {"status": "ok"}
 
 @router.post("/predict", response_model=PredictionResponse)
-def predict_price(req: PredictionRequest, model=Depends(get_model), db: Session = Depends(get_db)):
+def predict_price(req: PredictionRequest, model=Depends(get_model), db: Session = Depends(get_db),current_user = Depends(get_current_active_user)):
     try:
         service = PredictionService(model, db)
         return service.predict_price(req)
@@ -30,8 +30,8 @@ def predict_price(req: PredictionRequest, model=Depends(get_model), db: Session 
         logger.error(f"Prediction failed: {e}")
         raise HTTPException(status_code=500, detail="Internal server error during prediction.")
 
-@router.post("/explain", response_model=ExplainResponse)
-def explain_prediction(req: PredictionRequest, model=Depends(get_model), db: Session = Depends(get_db)):
+@router.post("/explain", response_model=ExplainResponse,)
+def explain_prediction(req: PredictionRequest,current_user = Depends(get_current_active_user), model=Depends(get_model), db: Session = Depends(get_db)):
     try:
         service = PredictionService(model, db)
         return service.explain_prediction(req)
@@ -40,7 +40,7 @@ def explain_prediction(req: PredictionRequest, model=Depends(get_model), db: Ses
         raise HTTPException(status_code=500, detail="Failed to explain model prediction.")
 
 @router.post("/simulate", response_model=SimulationResponse)
-def simulate_price(req: SimulationRequest, model=Depends(get_model), db: Session = Depends(get_db)):
+def simulate_price(req: SimulationRequest,current_user = Depends(get_current_active_user), model=Depends(get_model), db: Session = Depends(get_db)):
     try:
         service = PredictionService(model, db)
         
@@ -62,7 +62,7 @@ def simulate_price(req: SimulationRequest, model=Depends(get_model), db: Session
         raise HTTPException(status_code=500, detail="Simulation failed.")
 
 @router.post("/recommendations", response_model=RecommendationResponse)
-def get_recommendations(req: PredictionRequest, model=Depends(get_model), db: Session = Depends(get_db)):
+def get_recommendations(req: PredictionRequest,current_user = Depends(get_current_active_user), model=Depends(get_model), db: Session = Depends(get_db)):
     try:
         service = PredictionService(model, db)
         

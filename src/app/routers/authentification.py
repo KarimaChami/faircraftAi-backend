@@ -10,6 +10,7 @@ from src.app.dependencies.auth_dependencies import require_admin
 from src.app.models.user import User
 from fastapi import HTTPException
 
+
 router = APIRouter(prefix="/auth", tags=["Authentication"])
 
 
