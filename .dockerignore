@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+.venv/
+venv/
+
+# Git
+.git/
+.gitignore
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data (important for ML projects)
+data/
+datasets/
+src/ml/models/
+checkpoints/
+
+# Cache
+.cache/
+
+# Notebook
+*.ipynb
+
+# Docker
+Dockerfile
+docker-compose.yml
