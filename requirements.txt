@@ -17,3 +17,8 @@ xgboost
 nbformat
 beautifulsoup4 
 pytest
+shap
+joblib
+httpx
+email-validator
+uvicorn 
